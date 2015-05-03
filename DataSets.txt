@@ -1,0 +1,63 @@
+Για descriptive data mining (causality) (sampling to sampling datas)
+
+Output (κάθε φορά θα είναι ένα από τα 2 στο dataset για να εντοπίσουμε τις αιτίες που οδηγούν σε υψηλές ή χαμηλές τιμές.)
+
+·         Av. Wt. Deviation
+
+·         Mortality Deviation
+
+Input
+
+Κατηγορικές
+
+·         Σταθμός
+
+·         Ποιότητα σταθμού
+
+·         Ετος και μήνας στοκαρίσματος
+
+·         Grading
+
+·         Vaccinated (true/false ή 0/1)
+
+·         Ταιστής
+
+·         Τροφή
+
+·         Start Av. Weight Class
+
+Αριθμητικές
+
+·         Feed Deviation (Τι ποσοστό ταίσαμε παραπάνω ή λιγότερο από το προτεινόμενο.)
+
+·         Feeding Rate (1-3 pelet /fish/min θεωρείται οκ  νομίζω ο Κώστας το μετράει Kg/h  )
+
+ 
+
+Για descriptive & predictive (Life To Date Datas regression + causality )
+
+Output
+
+·         FCR
+
+·         Mortality %
+
+Input
+
+Κατηγορικές
+
+·         Μονάδα
+
+·         Σταθμός
+
+·         Ποιότητα γόνου ( Α, Β )
+
+·         Ετος και μήνας στοκαρίσματος (Ο μήνας κρύβει πληροφορίες θερμοκρασιακού προφίλ)
+
+·         Grading (A ,B, C, -) όπου "-" αδιαλόγητα.
+
+·         Vaccinated (true/false ή 0/1)
+
+Αριθμητικές
+
+·         Καμία
