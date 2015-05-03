@@ -1,16 +1,17 @@
 body <- dashboardBody(
   dashboardBody(
     tabItems(
-      tabItem(tabName ="Univariate",
-              h4("End Average Weight:"),
-              h1("My title"),
+      tabItem(tabName ="one",
+              
+              h1("File outpup from first button"),
               hr(),
         tableOutput('contents')
   
   
   ),
-  tabItem(tabName = "readme",
-          h1("My title readme")
+  tabItem(tabName = "two",
+          h1("File outpup from second button"),
+          tableOutput('contents2')
   )
  
   )))

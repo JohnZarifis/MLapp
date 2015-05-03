@@ -3,13 +3,15 @@ sidebar <- dashboardSidebar(
   sliderInput("ColumnNo", "Number of Dimensions",
               min = 0, max = 50, value = 3, step = 1
   ),
-  fileInput('file1', 'Choose file to upload'
-  ),
-  
+#   fileInput('file1', 'Choose file to upload'
+#   ),
+  hr(),
+  shinyFilesButton('file', 'Select a File', 'Please select a file', FALSE),
+  hr(),
   sidebarMenu(
     menuItem("Navigation",  icon = icon("navicon"),
-             menuSubItem("Univariate", tabName = "Univariate",icon = icon("signal")),
-             menuSubItem("readme", tabName = "readme")
+             menuSubItem("FirstButton", tabName = "one",icon = icon("signal")),
+             menuSubItem("SecondButton", tabName = "two")
     ),
     menuItem("Widgets", icon = icon("th"), tabName = "widgets", badgeLabel = "new",
              badgeColor = "green"),
