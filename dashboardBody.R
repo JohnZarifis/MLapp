@@ -1,17 +1,21 @@
 body <- dashboardBody(
-  dashboardBody(
-    tabItems(
-      tabItem(tabName ="one",
-              
-              h1("File outpup from first button"),
-              hr()
-        #tableOutput('contents')
-  
-  
-  ),
-  tabItem(tabName = "two",
-          h1("File outpup from second button"),
-          tableOutput('contents')
-  )
  
-  )))
+  tabItems(
+    tabItem(tabName ="one",
+              
+              h1("DataSet"),
+              hr(),
+              textOutput('contents')
+     ),
+    
+     tabItem(tabName = "two",
+          h1("Summary of the DataSet: ")
+     ),
+  
+     tabItem(tabName = "Analysis",
+          h1("Machine Learning Algorithms")
+     )
+     
+  ) 
+  
+)
