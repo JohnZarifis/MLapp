@@ -11,7 +11,7 @@ body <- dashboardBody(
   ),
   tabItem(tabName = "two",
           h1("File outpup from second button"),
-          tableOutput('contents2')
+          tableOutput('contents')
   )
  
   )))
