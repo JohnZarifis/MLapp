@@ -4,8 +4,8 @@ body <- dashboardBody(
       tabItem(tabName ="one",
               
               h1("File outpup from first button"),
-              hr(),
-        tableOutput('contents')
+              hr()
+        #tableOutput('contents')
   
   
   ),
