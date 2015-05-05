@@ -5,9 +5,9 @@ body <- dashboardBody(
               
               h1("DataSet"),
               hr(),
-              textOutput('contents')
+              tableOutput('contents')
      ),
-    
+     
      tabItem(tabName = "two",
           h1("Summary of the DataSet: ")
      ),
