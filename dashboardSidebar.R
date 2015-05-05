@@ -14,9 +14,8 @@ sidebar <- dashboardSidebar(
              menuSubItem("SecondButton", tabName = "two")
     ),
     menuItem("Analysis", icon = icon("bar-chart-o"),
-             menuSubItem(icon=NULL, actionButton(inputId = 'Train',  
-             label = ' Train ML model', icon =icon("signal")
-            )),
+             menuSubItem(icon=NULL, actionButton(inputId = 'goTrain',  
+             label = ' Train ML model', icon =icon("signal")) ),
             menuSubItem("Training results", tabName = "TrainResults"),
             menuSubItem("Predict with model", tabName = "Predict")
     ) # end menu Analysis
