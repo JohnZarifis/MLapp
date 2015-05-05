@@ -58,14 +58,9 @@ runGLM <- reactive({
   dummy.ds <- dummyVars("~.", data=dset.train[inpts.vars], sep=".", fullRank=F)
   dummy.dset.train <- data.frame(predict(dummy.ds, newdata = dset.train), dset.train[class.name])
   
-  
-<<<<<<< HEAD
- 
-View(dummy.dset.train)
-=======
-  list.vars <- list()
->>>>>>> origin/master
 
+View(dummy.dset.train)
+  list.vars <- list()
 
   fitControl <- trainControl(## 10-fold CV
     method = "repeatedcv",

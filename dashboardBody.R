@@ -2,20 +2,11 @@ body <- dashboardBody(
  
   tabItems(
     tabItem(tabName ="one",
-<<<<<<< HEAD
           h1("DataSet"),
           hr(),
           dataTableOutput('contents')
      ), # end tabItem
     
-=======
-              
-              h1("DataSet"),
-              hr(),
-              tableOutput('contents')
-     ),
-     
->>>>>>> origin/master
      tabItem(tabName = "two",
           h1("Summary of the DataSet: ")
      ), # end tabItem

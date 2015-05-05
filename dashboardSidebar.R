@@ -1,7 +1,7 @@
 sidebar <- dashboardSidebar(
   img(src="Aquamanager-logo.png" ,class = "img-responsive"),
   sliderInput("ColumnNo", "Number of Categorical Dimensions",
-              min = 2, max = 50, value = 3, step = 1
+              min = 0, max = 50, value = 3, step = 1
   ),
 #   fileInput('file1', 'Choose file to upload'
 #   ),
