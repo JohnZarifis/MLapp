@@ -42,7 +42,7 @@ shinyServer(function(input, output,session) {
 runGLM <- reactive({
   
   
-  list.vars <- list()
+  list.vars <- list(
 
 
 })
