@@ -59,7 +59,7 @@ runGLM <- reactive({
   dummy.dset.train <- data.frame(predict(dummy.ds, newdata = dset.train), dset.train[class.name])
   
 
-View(dummy.dset.train)
+#View(dummy.dset.train)
   list.vars <- list()
 
   fitControl <- trainControl(## 10-fold CV
@@ -93,7 +93,7 @@ output$summary.model <- renderPrint({
       
       glm.mod <- runGLM()
       res <- glm.mod$results[rownames(glm.mod$bestTune),]
-      print(res) 
+      #print(res) 
       
     }) # end isolate
   } # end if...else 
@@ -235,7 +235,7 @@ output$prediction.value.ML <- renderPrint({
     isolate({
       
       pred_val <- predict.with.ML.Model()
-      print( pred_val )
+      #print( pred_val )
       
     }) # end isolate
   } # end if...else
