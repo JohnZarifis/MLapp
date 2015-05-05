@@ -57,10 +57,6 @@ runGLM <- reactive({
   
   dummy.ds <- dummyVars("~.", data=dset.train[inpts.vars], sep=".", fullRank=F)
   dummy.dset.train <- data.frame(predict(dummy.ds, newdata = dset.train), dset.train[class.name])
-  
-
-View(dummy.dset.train)
-  list.vars <- list()
 
   fitControl <- trainControl(## 10-fold CV
     method = "repeatedcv",
@@ -168,7 +164,7 @@ predict.with.ML.Model <- reactive({
   names(instance.data) <- list.predictors
   instance.data <- data.frame(instance.data)
 
-  tm.data <- rbind(instance.data, data[ list.predictors ])
+  tm.data <- rbind(data[ list.predictors ], instance.data)
   names(tm.data) <- list.predictors
 
   no.cat.vars <- as.numeric(input$ColumnNo)
@@ -179,16 +175,15 @@ predict.with.ML.Model <- reactive({
   dummy.instance.data <- dummyVars("~.", data=tm.data, fullRank=F, sep="")
   dummy.newdata <- data.frame( predict( dummy.instance.data, newdata = tm.data))
 
+ 
 
-View(dummy.newdata)
-
-  # dummy.inpts <- dummy.newdata[1,]
+  dummy.inpts <- as.matrix(data.frame(dummy.newdata[ nrow(dummy.newdata),]))
   
-  pred_ML_model <- predict(ML.model, dummy.newdata, type="raw")
+  pred_ML_model <- predict(ML.model, dummy.inpts, type="raw")
 
   names(pred_ML_model) <- as.character(targ)
   
-  return(pred_ML_model[1])
+  return(pred_ML_model)
   
 })
 
