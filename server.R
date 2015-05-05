@@ -59,8 +59,12 @@ runGLM <- reactive({
   dummy.dset.train <- data.frame(predict(dummy.ds, newdata = dset.train), dset.train[class.name])
   
   
+<<<<<<< HEAD
  
 View(dummy.dset.train)
+=======
+  list.vars <- list()
+>>>>>>> origin/master
 
 
   fitControl <- trainControl(## 10-fold CV
