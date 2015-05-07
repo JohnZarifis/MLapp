@@ -14,6 +14,7 @@ library("glmnet")
 library("effects")
 library("relaimpo")
 library("ROCR")
+library("stringr")
 
 
 shinyServer(function(input, output,session) {
@@ -28,7 +29,7 @@ shinyServer(function(input, output,session) {
     fileSelected <- parseFilePaths(volumes, input$file)
   
     dataset <- read_excel(as.character(fileSelected$datapath), sheet = 1 ,col_names = TRUE, na='na')
-    
+    colnames( dataset ) <- str_replace_all(colnames( dataset ), c(" " = "", "-" = ".","%"=".perc"))
     # transform data set
     num.cat.var <- as.numeric(input$ColumnNo)
     dataset[, 1:num.cat.var] <- sapply( dataset[, 1:num.cat.var], as.factor )
