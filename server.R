@@ -58,6 +58,8 @@ runGLM <- reactive({
   dummy.ds <- dummyVars("~.", data=dset.train[inpts.vars], sep=".", fullRank=F)
   dummy.dset.train <- data.frame(predict(dummy.ds, newdata = dset.train), dset.train[class.name])
 
+#View(dummy.dset.train)
+
   fitControl <- trainControl(## 10-fold CV
     method = "repeatedcv",
     number = 10,
@@ -173,13 +175,11 @@ predict.with.ML.Model <- reactive({
   }
   
   dummy.instance.data <- dummyVars("~.", data=tm.data, fullRank=F, sep="")
-  dummy.newdata <- data.frame( predict( dummy.instance.data, newdata = tm.data))
-
- 
+  dummy.newdata <- data.frame( predict( dummy.instance.data, newdata = tm.data), 'Class'=NA)
 
   dummy.inpts <- as.matrix(data.frame(dummy.newdata[ nrow(dummy.newdata),]))
   
-  pred_ML_model <- predict(ML.model, dummy.inpts, type="raw")
+  pred_ML_model <- predict(ML.model, dummy.inpts) #, type="raw")
 
   names(pred_ML_model) <- as.character(targ)
   
