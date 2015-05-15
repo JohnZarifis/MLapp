@@ -179,12 +179,13 @@ predict.with.ML.Model <- reactive({
   dummy.newdata <- data.frame( predict( dummy.instance.data, newdata = tm.data), 'Class'=NA)
 
   dummy.inpts <- as.matrix(data.frame(dummy.newdata[ nrow(dummy.newdata),]))
-  
-  pred_ML_model <- predict(ML.model, dummy.inpts) #, type="raw")
+  test.instance <- rbind(dummy.inpts,dummy.inpts)
+
+  pred_ML_model <- predict(ML.model, test.instance, type="raw", na.action = na.omit)
 
   names(pred_ML_model) <- as.character(targ)
   
-  return(pred_ML_model)
+  return(pred_ML_model[1])
   
 })
 

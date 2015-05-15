@@ -62,12 +62,12 @@ results <- results[order(results$Class),]
 results <- results[(results$Class != 0),]
 
 
-par(mar=c(5,15,4,2)) # increase y-axis margin. 
-xx <- barplot(results$Class, width = 0.25, 
-              main = paste("Variable Importance using GLM model"), horiz = T, 
-              xlab = "< (-) importance >  < neutral >  < importance (+) >", axes = TRUE, 
-              col = ifelse((results$Class > 0), 'blue', 'red')) 
-axis(2, at=xx, labels=results$VariableName, tick=FALSE, las=2, line=-0.3, cex.axis=0.6) 
+# par(mar=c(5,15,4,2)) # increase y-axis margin. 
+# xx <- barplot(results$Class, width = 0.25, 
+#               main = paste("Variable Importance using GLM model"), horiz = T, 
+#               xlab = "< (-) importance >  < neutral >  < importance (+) >", axes = TRUE, 
+#               col = ifelse((results$Class > 0), 'blue', 'red')) 
+# axis(2, at=xx, labels=results$VariableName, tick=FALSE, las=2, line=-0.3, cex.axis=0.6) 
 
 
 #------------------------ 
@@ -81,11 +81,10 @@ dummy.ds.test <- dummy.dset.train[ ids, ]
 # 
 newdata <- as.matrix(data.frame(dummy.ds.test[, predictorsNames]))
 
-test.instance <- newdata[1,]
-
+test.instance <- rbind(newdata[1,],newdata[1,])
 best.alpha <- glmnetFit$bestTune$alpha
 best.lambda <- glmnetFit$bestTune$lambda
-testPred <- predict(glmnetFit, newdata, type="raw" )
+testPred <- predict(glmnetFit, test.instance, type="raw", na.action = na.omit )
 
 
 
