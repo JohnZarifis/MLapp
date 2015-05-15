@@ -67,7 +67,7 @@ runGLM <- reactive({
     ## repeated ten times
     repeats = 10)
   
-  dummy.fmla <- as.formula( paste(class.name, paste(names(dummy.dset.train), collapse="+"), sep=" ~ ") )   
+  dummy.fmla <- as.formula( paste(class.name, paste(names(dummy.dset.train[-ncol(dummy.dset.train)]), collapse="+"), sep=" ~ ") )   
   
   glmnetFit <- train(dummy.fmla, data=dummy.dset.train, method = "glmnet", metric = "RMSE", trControl = fitControl)
   
@@ -178,14 +178,13 @@ predict.with.ML.Model <- reactive({
   dummy.instance.data <- dummyVars("~.", data=tm.data, fullRank=F, sep="")
   dummy.newdata <- data.frame( predict( dummy.instance.data, newdata = tm.data), 'Class'=NA)
 
-  dummy.inpts <- as.matrix(data.frame(dummy.newdata[ nrow(dummy.newdata),]))
-  test.instance <- rbind(dummy.inpts,dummy.inpts)
-
-  pred_ML_model <- predict(ML.model, test.instance, type="raw", na.action = na.omit)
+  dummy.inpts <- as.matrix(data.frame(dummy.newdata[ nrow(dummy.newdata), ]))
+  
+  pred_ML_model <- predict(ML.model, dummy.inpts, type="raw", na.action = na.omit)
 
   names(pred_ML_model) <- as.character(targ)
   
-  return(pred_ML_model[1])
+  return(pred_ML_model)
   
 })
 

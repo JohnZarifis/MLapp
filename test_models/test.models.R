@@ -24,10 +24,10 @@ num.numeric.vars <- length(inpt.names) - num.categ.vars
 dataset[, 1:num.categ.vars] <- sapply( dataset[, 1:num.categ.vars], as.factor )
 
 dset.train <- dataset[, names(dataset) %in% unlist(inpt.names)]
-fmla <- as.formula( paste(class.name, paste(inpt.names, collapse="+"), sep=" ~ ") )
+# fmla <- as.formula( paste(class.name, paste(inpt.names, collapse="+"), sep=" ~ ") )
+# dummy.ds <- dummyVars(fmla, data=dataset[, 1:length(var.names)], fullRank=F)
 
-dummy.ds <- dummyVars(fmla, data=dataset[, 1:length(var.names)], fullRank=F)
-
+dummy.ds <- dummyVars("~.", data=dataset[, 1:length(var.names)], fullRank=F)
 dummy.dset.train <- data.frame(predict(dummy.ds, newdata = dataset),"Class"= dataset[class.name])
 
 fitControl <- trainControl(## 10-fold CV
